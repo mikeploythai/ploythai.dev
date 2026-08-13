@@ -26,8 +26,8 @@ import { Image } from "astro:assets";
 						id="avatar"
 						src="https://github.com/mikeploythai.png"
 						alt=""
-						width={44}
-						height={44}
+						width={45}
+						height={45}
 						loading="eager"
 					/>
 					<hgroup>
@@ -53,9 +53,7 @@ import { Image } from "astro:assets";
 					<p>
 						I design interfaces, fight against APIs, build agentic stuff, and
 						talk way too much about software with my friends. I&apos;m also a
-						cat dad, a musician, an occasional lifter, and&nbsp;
-						<span id="allegation">allegedly</span>
-						&nbsp;a content creator.
+						cat dad, a musician, and an occasional lifter.
 					</p>
 
 					<ul>
@@ -145,7 +143,6 @@ header {
 }
 
 #avatar {
-	margin-block-start: 0.35rem;
 	border-radius: var(--radius-full);
 	background-color: var(--primary);
 	outline: 1px solid oklch(1 0 0 / 0.1);
@@ -203,10 +200,6 @@ section {
 	gap: 0.875rem;
 }
 
-#allegation {
-	font-style: italic;
-}
-
 ul {
 	display: flex;
 	gap: 0.5rem;
@@ -217,14 +210,6 @@ ul {
 @media (width >= 48rem) {
 	#root {
 		padding: 4rem;
-	}
-
-	header {
-		align-items: center;
-	}
-
-	#avatar {
-		margin-block-start: 0;
 	}
 }
 </style>
