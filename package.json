@@ -10,12 +10,16 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"check": "biome check --write"
+		"check": "biome check --write",
+		"typegen:cf": "wrangler types"
 	},
 	"dependencies": {
-		"astro": "^7.2.1"
+		"@astrojs/cloudflare": "^14.2.1",
+		"astro": "^7.2.1",
+		"wrangler": "^4.122.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.8"
+		"@biomejs/biome": "2.5.8",
+		"@types/node": "^26.2.0"
 	}
 }
