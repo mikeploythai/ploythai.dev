@@ -123,6 +123,11 @@
 		font-weight: 600;
 	}
 
+	hr {
+		border-block-start: none;
+		border-inline: none;
+	}
+
 	a {
 		color: var(--primary);
 		text-decoration: underline;
