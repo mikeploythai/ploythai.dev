@@ -1,0 +1,21 @@
+<div class="empty">
+	<p class="empty__placeholder">Soon&trade;</p>
+</div>
+
+<style>
+.empty {
+	display: grid;
+	place-items: center;
+	padding: 1rem;
+	border-width: 1px;
+	border-style: dashed;
+	border-radius: var(--radius-lg);
+	min-block-size: 8rem;
+	background-color: color-mix(in oklab, var(--accent), transparent 85%);
+}
+
+.empty__placeholder {
+	font-family: var(--font-mono);
+	font-style: italic;
+}
+</style>

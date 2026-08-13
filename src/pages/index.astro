@@ -1,16 +1,229 @@
 ---
+import "@/styles.css";
+import Empty from "@/components/empty.astro";
+
+import { Image } from "astro:assets";
 ---
 
-<html lang="en">
+<html lang="en-US">
 	<head>
 		<meta charset="utf-8">
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 		<link rel="icon" href="/favicon.ico">
 		<meta name="viewport" content="width=device-width">
 		<meta name="generator" content={Astro.generator}>
-		<title>Astro</title>
+		<title>Mike Ploythai</title>
 	</head>
+
 	<body>
-		<h1>Astro</h1>
+		<div id="root">
+			<main>
+				<header>
+					<Image
+						id="avatar"
+						src="https://github.com/mikeploythai.png"
+						alt=""
+						width={44}
+						height={44}
+					/>
+					<hgroup>
+						<h1>Mike Ploythai</h1>
+						<p id="role">
+							Engineering @&nbsp;
+							<a
+								href="https://pacifichealthworks.com"
+								target="_blank"
+								rel="noreferrer"
+								title="Visit Pacific HealthWork's website in a new tab"
+							>
+								Pacific HealthWorks
+								<span class="external-arrow" aria-hidden="true">
+									&nbsp;&nearr;
+								</span>
+							</a>
+						</p>
+					</hgroup>
+				</header>
+
+				<section id="about">
+					<h2 class="sr-only">About</h2>
+
+					<p>
+						I design interfaces, fight against APIs, build agentic stuff, and
+						talk way too much about software with my friends. I&apos;m also a
+						cat dad, a musician, an occasional lifter, and&nbsp;
+						<span id="allegation">allegedly</span>
+						&nbsp;a content creator.
+					</p>
+
+					<ul>
+						<li>
+							<a
+								href="https://github.com/mikeploythai"
+								target="_blank"
+								rel="noreferrer"
+								title="Visit Mike's GitHub in a new tab"
+							>
+								GitHub
+								<span class="external-arrow" aria-hidden="true">
+									&nbsp;&nearr;
+								</span>
+							</a>
+						</li>
+
+						<li>
+							<a
+								href="https://twitter.com/mikeploythai"
+								target="_blank"
+								rel="noreferrer"
+								title="Visit Mike's Twitter in a new tab"
+							>
+								Twitter
+								<span class="external-arrow" aria-hidden="true">
+									&nbsp;&nearr;
+								</span>
+							</a>
+						</li>
+
+						<li>
+							<a
+								href="https://youtube.com/@mikeploythai"
+								target="_blank"
+								rel="noreferrer"
+								title="Visit Mike's YouTube channel in a new tab"
+							>
+								YouTube
+								<span class="external-arrow" aria-hidden="true">
+									&nbsp;&nearr;
+								</span>
+							</a>
+						</li>
+					</ul>
+				</section>
+
+				<hr>
+
+				<section>
+					<h2>
+						<span class="section-heading-motif" aria-hidden="true">//</span>
+						&nbsp;Blog
+					</h2>
+					<Empty />
+				</section>
+
+				<section>
+					<h2>
+						<span class="section-heading-motif" aria-hidden="true">//</span>
+						&nbsp;Work
+					</h2>
+					<Empty />
+				</section>
+
+				<section>
+					<h2>
+						<span class="section-heading-motif" aria-hidden="true">//</span>
+						&nbsp;Projects
+					</h2>
+					<Empty />
+				</section>
+			</main>
+		</div>
 	</body>
 </html>
+
+<style>
+#root {
+	padding: 2rem;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	color: var(--muted);
+}
+
+header {
+	display: flex;
+	gap: 0.875rem;
+}
+
+#avatar {
+	margin-block-start: 0.35rem;
+	border-radius: var(--radius-full);
+	background-color: var(--primary);
+	outline: 1px solid oklch(1 0 0 / 0.1);
+	outline-offset: -1px;
+}
+
+h1,
+h2 {
+	color: var(--foreground);
+}
+
+h1 {
+	font-size: 1rem;
+}
+
+h2 {
+	font-size: 1.25rem;
+}
+
+.external-arrow {
+	opacity: 1;
+}
+
+@media (hover: hover) {
+	.external-arrow {
+		opacity: 0;
+	}
+
+	a:is(:hover, :focus-visible) > .external-arrow {
+		opacity: 1;
+	}
+}
+
+#role {
+	color: var(--muted);
+}
+
+.section-heading-motif {
+	color: var(--primary);
+	font-weight: 800;
+}
+
+#about {
+	max-inline-size: 32rem;
+	gap: 2rem;
+}
+
+section {
+	display: grid;
+	gap: 0.875rem;
+}
+
+#allegation {
+	font-style: italic;
+}
+
+ul {
+	display: flex;
+	gap: 0.5rem;
+	padding-inline-start: 0;
+	list-style: none;
+}
+
+@media (width >= 48rem) {
+	#root {
+		padding: 4rem;
+	}
+
+	header {
+		align-items: center;
+	}
+
+	#avatar {
+		margin-block-start: 0;
+	}
+}
+</style>
