@@ -1,5 +1,5 @@
 {
-	"name": "ploythai_dev",
+	"name": "ploythai.dev",
 	"type": "module",
 	"version": "0.0.1",
 	"engines": {
@@ -15,8 +15,9 @@
 	},
 	"dependencies": {
 		"@astrojs/cloudflare": "^14.2.1",
+		"@lucide/astro": "^1.31.0",
 		"astro": "^7.2.1",
-		"wrangler": "^4.122.0"
+		"wrangler": "^4.123.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.8",

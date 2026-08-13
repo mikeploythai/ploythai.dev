@@ -1,5 +1,8 @@
 ---
 import "@/styles.css";
+
+import { ArrowUpRightIcon } from "@lucide/astro";
+
 import Empty from "@/components/empty.astro";
 
 import { Image } from "astro:assets";
@@ -38,9 +41,7 @@ import { Image } from "astro:assets";
 								title="Visit Pacific HealthWork's website in a new tab"
 							>
 								Pacific HealthWorks
-								<span class="external-arrow" aria-hidden="true">
-									&nbsp;&nearr;
-								</span>
+								<ArrowUpRightIcon class="external-arrow" aria-hidden="true" />
 							</a>
 						</p>
 					</hgroup>
@@ -66,9 +67,7 @@ import { Image } from "astro:assets";
 								title="Visit Mike's GitHub in a new tab"
 							>
 								GitHub
-								<span class="external-arrow" aria-hidden="true">
-									&nbsp;&nearr;
-								</span>
+								<ArrowUpRightIcon class="external-arrow" aria-hidden="true" />
 							</a>
 						</li>
 
@@ -80,9 +79,7 @@ import { Image } from "astro:assets";
 								title="Visit Mike's Twitter in a new tab"
 							>
 								Twitter
-								<span class="external-arrow" aria-hidden="true">
-									&nbsp;&nearr;
-								</span>
+								<ArrowUpRightIcon class="external-arrow" aria-hidden="true" />
 							</a>
 						</li>
 
@@ -94,9 +91,7 @@ import { Image } from "astro:assets";
 								title="Visit Mike's YouTube channel in a new tab"
 							>
 								YouTube
-								<span class="external-arrow" aria-hidden="true">
-									&nbsp;&nearr;
-								</span>
+								<ArrowUpRightIcon class="external-arrow" aria-hidden="true" />
 							</a>
 						</li>
 					</ul>
@@ -171,7 +166,12 @@ h2 {
 }
 
 .external-arrow {
+	display: inline-block;
+	block-size: 1rem;
+	inline-size: 1.275rem;
+	vertical-align: middle;
 	opacity: 1;
+	stroke-width: 2.5;
 }
 
 @media (hover: hover) {
