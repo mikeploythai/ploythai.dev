@@ -89,7 +89,7 @@
 		--accent: oklch(0.34 0.02 310);
 
 		--radius: 0.45rem;
-		--radius-lg: calc(var(--radius) * 1.4);
+		--radius-lg: calc(var(--radius) * 2);
 		--radius-full: calc(infinity * 1px);
 
 		--font-sans:
@@ -107,7 +107,7 @@
 
 	body {
 		font-family: var(--font-sans);
-		font-size: 14px;
+		font-size: 0.875rem;
 		text-rendering: optimizeLegibility;
 		scrollbar-gutter: stable;
 		background-color: var(--background);
@@ -124,15 +124,27 @@
 	}
 
 	hr {
-		border-block-start: none;
-		border-inline: none;
+		border: 0;
+		border-block-start: 1px solid var(--accent);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--primary);
+		outline-offset: 4px;
 	}
 
 	a {
 		color: var(--primary);
 		text-decoration: underline;
-		text-underline-offset: 3px;
+		text-underline-offset: 0.25em;
 		font-weight: 500;
+
+		&:focus-visible {
+			outline-color: transparent;
+			border-radius: 0.2em;
+			box-shadow: 0 0 0 2px var(--primary);
+			box-decoration-break: clone;
+		}
 	}
 
 	@media (hover: hover) {
@@ -143,11 +155,6 @@
 				text-decoration: underline;
 			}
 		}
-	}
-
-	:focus-visible {
-		outline: 2px solid var(--primary);
-		outline-offset: 4px;
 	}
 }
 
@@ -162,5 +169,24 @@
 		clip-path: inset(50%);
 		white-space: nowrap;
 		border-width: 0;
+	}
+}
+
+@layer components {
+	.external-arrow {
+		display: inline;
+		width: 1em;
+		height: 1lh;
+		vertical-align: middle;
+		margin-inline-start: 0.1625em;
+		opacity: 1;
+
+		@media (hover: hover) {
+			opacity: 0;
+
+			a:is(:hover, :focus-visible) & {
+				opacity: 1;
+			}
+		}
 	}
 }
