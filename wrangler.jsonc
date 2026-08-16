@@ -10,5 +10,8 @@
 	},
 	"observability": {
 		"enabled": true
+	},
+	"secrets": {
+		"required": ["GITHUB_PAT"]
 	}
 }
