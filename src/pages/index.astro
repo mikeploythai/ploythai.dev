@@ -464,6 +464,10 @@ const experienceDateFormatter = new Intl.DateTimeFormat("en-US", {
 		gap: 0.875rem;
 	}
 
+	#experience {
+		container-type: inline-size;
+	}
+
 	#experience > ol {
 		padding-inline-start: 0;
 		list-style: none;
@@ -511,10 +515,16 @@ const experienceDateFormatter = new Intl.DateTimeFormat("en-US", {
 
 	.experience-timeline__heading {
 		display: flex;
-		align-items: baseline;
+		align-items: flex-start;
 		justify-content: space-between;
 		gap: 0.375rem 1rem;
+		flex-direction: column;
 		flex-wrap: wrap;
+
+		@container (width >= 40rem) {
+			align-items: baseline;
+			flex-direction: row;
+		}
 
 		& > div > h3 {
 			color: var(--foreground);
