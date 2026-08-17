@@ -7,7 +7,7 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"includes": ["**", "!public", "!worker-configuration.d.ts"]
+		"includes": ["**", "!public", "!worker-configuration.d.ts", "!**/*.astro"]
 	},
 	"formatter": {
 		"enabled": true
