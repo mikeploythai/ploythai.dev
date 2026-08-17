@@ -204,9 +204,9 @@
 		gap: 0.25rem;
 		padding: 0.25rem 0.4rem;
 		border-radius: var(--radius-sm);
-		box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary), transparent 70%);
-		background-color: color-mix(in oklab, var(--primary), transparent 90%);
-		color: var(--primary);
+		box-shadow: 0 0 0 1px var(--accent);
+		background-color: color-mix(in oklab, var(--accent), transparent 65%);
+		color: var(--muted);
 		font-family: var(--font-mono);
 		font-size: 0.75rem;
 		font-weight: 400;

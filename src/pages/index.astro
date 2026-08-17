@@ -4,6 +4,7 @@ import "@/styles.css";
 import { ArrowUpRightIcon, GitForkIcon, StarIcon } from "@lucide/astro";
 
 import Empty from "@/components/empty.astro";
+import { experiences } from "@/data/experience";
 import { getProfile, getRepos } from "@/data/github";
 
 import { Image } from "astro:assets";
@@ -29,6 +30,15 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 	month: "short",
 	day: "numeric",
 	timeZone: "UTC",
+});
+
+const latestExperiences = experiences
+	.toSorted((a, b) => b.startDate.getTime() - a.startDate.getTime())
+	.slice(0, 3);
+
+const experienceDateFormatter = new Intl.DateTimeFormat("en-US", {
+	month: "short",
+	year: "numeric",
 });
 ---
 
@@ -61,12 +71,12 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 						<p id="role">
 							Engineering @&nbsp;
 							<a
-								href="https://pacifichealthworks.com"
+								href={latestExperiences[0].url ?? "#"}
 								target="_blank"
 								rel="noreferrer"
-								title="Visit Pacific HealthWork's website in a new tab"
+								title={`Visit ${latestExperiences[0].organization}'s website in a new tab`}
 							>
-								<span>Pacific HealthWorks</span>
+								<span>{latestExperiences[0].organization}</span>
 								<ArrowUpRightIcon class="external-arrow" aria-hidden="true" />
 							</a>
 						</p>
@@ -139,13 +149,60 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 					<Empty />
 				</section>
 
-				<section>
+				<section id="experience">
 					<h2>
 						<span class="section-heading__motif" aria-hidden="true">./</span>
-						work
+						experience
 					</h2>
 
-					<Empty />
+					<ol>
+						{
+							latestExperiences.map(
+								({ organization, url, startDate, endDate, title }) => (
+									<li>
+										<div class="experience-timeline__heading">
+											<div>
+												<h3>{title}</h3>
+
+												<p class="experience-timeline__organization">
+													{url ? (
+														<a
+															href={url}
+															target="_blank"
+															rel="noreferrer"
+															title={`Visit ${organization}'s website in a new tab`}
+														>
+															{organization}
+															<ArrowUpRightIcon
+																class="external-arrow"
+																aria-hidden="true"
+															/>
+														</a>
+													) : (
+														organization
+													)}
+												</p>
+											</div>
+
+											<p class="badge">
+												<time datetime={startDate.toISOString()}>
+													{experienceDateFormatter.format(startDate)}
+												</time>
+												<span> to </span>
+												{endDate ? (
+													<time datetime={endDate.toISOString()}>
+														{experienceDateFormatter.format(endDate)}
+													</time>
+												) : (
+													"Now"
+												)}
+											</p>
+										</div>
+									</li>
+								),
+							)
+						}
+					</ol>
 				</section>
 
 				<section id="latest-repos">
@@ -405,6 +462,69 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 	section {
 		display: grid;
 		gap: 0.875rem;
+	}
+
+	#experience > ol {
+		padding-inline-start: 0;
+		list-style: none;
+
+		& > li {
+			position: relative;
+			padding: 0.125rem 0 1.75rem 1.75rem;
+
+			&:last-child {
+				padding-block-end: 0;
+			}
+
+			&::before {
+				position: absolute;
+				inset-block-start: 0.4375rem;
+				inset-inline-start: 0;
+				inline-size: 0.625rem;
+				block-size: 0.625rem;
+				border: 2px solid var(--primary);
+				border-radius: var(--radius-full);
+				background-color: var(--background);
+				box-shadow: 0 0 0 0.3125rem var(--background);
+				content: "";
+				z-index: 1;
+			}
+
+			&:first-child::before {
+				background-color: var(--primary);
+			}
+
+			&:not(:last-child)::after {
+				position: absolute;
+				inset-block: 0.75rem -0.75rem;
+				inset-inline-start: 0.28125rem;
+				inline-size: 1px;
+				background: linear-gradient(
+					to bottom,
+					color-mix(in oklab, var(--primary), transparent 75%),
+					transparent
+				);
+				content: "";
+			}
+		}
+	}
+
+	.experience-timeline__heading {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.375rem 1rem;
+		flex-wrap: wrap;
+
+		& > div > h3 {
+			color: var(--foreground);
+			font-size: 1rem;
+			line-height: 1.25;
+		}
+	}
+
+	.experience-timeline__organization {
+		margin-block-start: 0.25rem;
 	}
 
 	#about > ul {
