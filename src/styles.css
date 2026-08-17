@@ -78,6 +78,12 @@
 	#__next {
 		isolation: isolate;
 	}
+
+	/* Fix iOS landscape text inflation */
+	html {
+		-webkit-text-size-adjust: 100%;
+		text-size-adjust: 100%;
+	}
 }
 
 @layer theme {

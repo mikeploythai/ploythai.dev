@@ -9,6 +9,10 @@ import { getProfile, getRepos } from "@/data/github";
 
 import { Image } from "astro:assets";
 
+export const prerender = false;
+
+Astro.cache.set({ maxAge: 3600, swr: 86400 });
+
 const latestRepos = await getRepos({ per_page: 6 });
 
 const {
@@ -87,9 +91,9 @@ const experienceDateFormatter = new Intl.DateTimeFormat("en-US", {
 					<h2 class="sr-only">About</h2>
 
 					<p>
-						I design interfaces, fight against APIs, build agentic stuff, and
-						talk way too much about software and the web with my friends.
-						I&apos;m also a cat dad, a musician, and an occasional lifter.
+						I design interfaces, fight with APIs, build agentic stuff, and talk
+						way too much about software and the web with my friends. I&apos;m
+						also a cat dad, a musician, and an occasional lifter.
 					</p>
 
 					<figure id="contributions">
