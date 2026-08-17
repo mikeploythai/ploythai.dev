@@ -87,7 +87,9 @@
 		--primary: oklch(0.79 0.1 275);
 		--muted: oklch(0.84 0.02 310);
 		--accent: oklch(0.34 0.02 310);
+		--contribution: oklch(0.85 0.13 165);
 
+		--radius-sm: calc(var(--radius) * 0.5);
 		--radius: 0.45rem;
 		--radius-lg: calc(var(--radius) * 2);
 		--radius-full: calc(infinity * 1px);
@@ -139,6 +141,17 @@
 		text-underline-offset: 0.25em;
 		font-weight: 500;
 
+		& > svg {
+			display: inline;
+			width: 1em;
+			height: 1lh;
+			vertical-align: middle;
+
+			&:last-child {
+				margin-inline-start: 0.1625em;
+			}
+		}
+
 		&:focus-visible {
 			outline-color: transparent;
 			border-radius: 0.2em;
@@ -174,11 +187,6 @@
 
 @layer components {
 	.external-arrow {
-		display: inline;
-		width: 1em;
-		height: 1lh;
-		vertical-align: middle;
-		margin-inline-start: 0.1625em;
 		opacity: 1;
 
 		@media (hover: hover) {
@@ -187,6 +195,28 @@
 			a:is(:hover, :focus-visible) & {
 				opacity: 1;
 			}
+		}
+	}
+
+	.badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		padding: 0.25rem 0.4rem;
+		border-radius: var(--radius-sm);
+		box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary), transparent 70%);
+		background-color: color-mix(in oklab, var(--primary), transparent 90%);
+		color: var(--primary);
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		font-weight: 400;
+		line-height: 1;
+		text-transform: lowercase;
+
+		& > svg {
+			inline-size: 0.875rem;
+			block-size: 0.875rem;
+			stroke-width: 1.5;
 		}
 	}
 }
